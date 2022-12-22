@@ -5,6 +5,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,12 +22,17 @@ public class User implements UserDetails {
     @Column
     private Long id;
 
+    @NotEmpty(message = "Имя не должно быть пустым")
+    @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной")
     @Column
     private String name;
 
+    @NotNull(message = "Укажите ваш возраст")
+    @Min(value = 18, message = "Вы должны быть старше 18 лет")
     @Column
     private int age;
 
+    @NotEmpty(message = "Укажите ваш email")
     @Column
     private String email;
 
@@ -124,5 +133,17 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }
