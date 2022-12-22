@@ -86,6 +86,15 @@ tr {
     color: white;
 }
 
+.button4 input {
+    background: #8D97A1;
+    color: white;
+    padding: 0.2rem 1em;
+    border-radius: 6px 6px;
+    border: 1px solid #0069d9;
+    font-size: 1.1rem;
+}
+
 .fieldForm {
     width: 22rem;
 }

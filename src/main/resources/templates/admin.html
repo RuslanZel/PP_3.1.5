@@ -33,11 +33,16 @@
             </div>
         </td>
         <td>
-            <a th:href="@{/admin/edit/{id}(id=${user.getId()})}">Update</a>
+            <form class="button4" th:action="@{/admin/edit/{id}(id=${user.getId()})}">
+                <input type="submit" value="Update">
+            </form>
         </td>
         <td>
-            <a th:href="@{/admin/delete/{id}(id=${user.getId()}) }">Delete</a>
+            <form class="button4" th:method="DELETE" th:action="@{/admin/delete/{id}(id=${user.getId()}) }">
+                <input type="submit" value="Delete"/>
+            </form>
         </td>
+
 
     </tr>
 
