@@ -3,9 +3,10 @@ package ru.kata.spring.boot_security.demo.services;
 import ru.kata.spring.boot_security.demo.models.User;
 
 import java.util.List;
+import java.util.Set;
 
 public interface UserService {
-    List<User> allUsers();
+    Set<User> allUsers();
 
     User findByName(String name);
 
