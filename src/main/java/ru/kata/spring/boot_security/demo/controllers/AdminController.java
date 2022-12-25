@@ -30,14 +30,14 @@ public class AdminController {
         model.addAttribute("userPrincipal", userPrincipal);
         model.addAttribute("newUser", new User());
         model.addAttribute("allUsers", userService.allUsers());
-        //model.addAttribute("roles", roleService.allRoles());
+        model.addAttribute("roles", roleService.allRoles());
         return "admin";
     }
 
     @GetMapping("/new")
     public String newUser(Model model) {
         model.addAttribute("user", new User());
-        //model.addAttribute("roles", roleService.allRoles());
+        model.addAttribute("roles", roleService.allRoles());
         return "new";
     }
 
