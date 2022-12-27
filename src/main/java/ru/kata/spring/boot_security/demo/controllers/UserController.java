@@ -22,6 +22,11 @@ public class UserController {
         return "/index";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/user")
     public String userPage(Principal principal, Model model) {
         User user = userServiceImpl.findByName(principal.getName());
