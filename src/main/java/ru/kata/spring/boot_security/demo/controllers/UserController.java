@@ -17,14 +17,19 @@ public class UserController {
         this.userServiceImpl = userServiceImpl;
     }
 
+    @GetMapping("/")
+    public String login() {
+        return "/index";
+    }
+
     @GetMapping("/index")
-    public String sayHello() {
+    public String login2() {
         return "/index";
     }
 
     @GetMapping("/login")
-    public String login() {
-        return "login";
+    public String login3() {
+        return "/index";
     }
 
     @GetMapping("/user")
