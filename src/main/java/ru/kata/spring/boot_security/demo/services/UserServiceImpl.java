@@ -35,6 +35,11 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         return userRepository.findByName(name);
     }
 
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     @Transactional
     @Override
     public void addUser(User user) {
@@ -61,13 +66,25 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         userRepository.deleteUser(id);
     }
 
+//    @Transactional
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        User user = userRepository.findByName(username);
+//        if (user == null) {
+//            throw new UsernameNotFoundException("User not found");
+//        }
+//        return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), user.getAuthorities());
+//    }
+
     @Transactional
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByName(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email);
+
         if (user == null) {
-            throw new UsernameNotFoundException("User not found");
+            throw new UsernameNotFoundException("Not found!");
         }
-        return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), user.getAuthorities());
+
+        return user;
     }
 }
