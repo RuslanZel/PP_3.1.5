@@ -34,29 +34,13 @@ public class AdminController {
         return "admin";
     }
 
-    @GetMapping("/new")
-    public String newUser(Model model) {
-        model.addAttribute("user", new User());
-        model.addAttribute("roles", roleService.allRoles());
-        return "new";
-    }
-
     @PostMapping("/new")
     public String create(@ModelAttribute("user") User user) {
         userService.addUser(user);
         return "redirect:/admin";
     }
 
-
-    @GetMapping("/edit/{id}")
-    public String edit(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("edit", userService.getUser(id));
-        model.addAttribute("roles", roleService.allRoles());
-        return "edit";
-    }
-
-
-    @PatchMapping("/{id}")
+    @PatchMapping("/edit/{id}")
     public String update(User user, @PathVariable("id") Long id) {
         user.setId(id);
         userService.updateUser(user);
