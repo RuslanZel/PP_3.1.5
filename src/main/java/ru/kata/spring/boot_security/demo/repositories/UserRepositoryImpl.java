@@ -16,7 +16,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public Set<User> allUsers() {
-        return entityManager.createQuery("select p from User p order by p.id", User.class)
+        return entityManager.createQuery("select p from User p", User.class)
                 .getResultStream().collect(Collectors.toSet());
     }
 

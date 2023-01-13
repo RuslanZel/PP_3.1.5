@@ -66,15 +66,6 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         userRepository.deleteUser(id);
     }
 
-//    @Transactional
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        User user = userRepository.findByName(username);
-//        if (user == null) {
-//            throw new UsernameNotFoundException("User not found");
-//        }
-//        return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), user.getAuthorities());
-//    }
 
     @Transactional
     @Override
