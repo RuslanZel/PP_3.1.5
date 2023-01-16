@@ -44,14 +44,15 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     @Override
     public void addUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRoles(user.getRoles());
         userRepository.addUser(user);
     }
 
     @Transactional
     @Override
     public void updateUser(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        if (!user.getPassword().equals(userRepository.getUser(user.getId()).getPassword())) {
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        }
         userRepository.updateUser(user);
     }
 
