@@ -1,5 +1,5 @@
 let userInfo = document.querySelector('#adminInfo')
-fetch('http://localhost:8080/api/user')
+fetch('http://localhost:8080/api/singleUser')
     .then(res => res.json())
     .then(user => {
         userInfo.innerHTML = `
@@ -13,7 +13,7 @@ fetch('http://localhost:8080/api/user')
 
 function showUserPage() {
     let userTable = document.querySelector('#userTable')
-    fetch('http://localhost:8080/api/user')
+    fetch('http://localhost:8080/api/singleUser')
         .then(res => res.json())
         .then(user => {
             userTable.innerHTML = `
@@ -32,7 +32,7 @@ showUserPage();
 //------ Таблица users -----
 
 function refreshTableUsers() {
-    fetch('http://localhost:8080/api/admin')
+    fetch('http://localhost:8080/api/user')
         .then(response => response.json())
         .then(result => refreshTable(result))
 }
@@ -64,7 +64,7 @@ function refreshTable(users) {
 //----- Новый пользователь -----
 
 function addNewUser() {
-    fetch('http://localhost:8080/api/admin', {
+    fetch('http://localhost:8080/api/user', {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -91,7 +91,7 @@ function addNewUser() {
 //----- Редактирование пользователя -----
 
 function editModal(id) {
-    fetch('http://localhost:8080/api/admin/' + id)
+    fetch('http://localhost:8080/api/user/' + id)
         .then(response => response.json())
         .then(result => writeFields(result))
 
@@ -108,7 +108,7 @@ function editModal(id) {
 }
 
 function editUser(id) {
-    fetch('http://localhost:8080/api/admin/' + id, {
+    fetch('http://localhost:8080/api/user/' + id, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -136,7 +136,7 @@ function editUser(id) {
 //----- Удаление пользователя -----
 
 function deleteModal(id) {
-    fetch('http://localhost:8080/api/admin/' + id)
+    fetch('http://localhost:8080/api/user/' + id)
         .then(response => response.json())
         .then(result => writeFields(result))
 
@@ -152,7 +152,7 @@ function deleteModal(id) {
 }
 
 function deleteUser(id) {
-    fetch('http://localhost:8080/api/admin/' + id, {
+    fetch('http://localhost:8080/api/user/' + id, {
         method: 'DELETE'
     }).then(() => {
         $('#deleteModalHtml').modal('hide')

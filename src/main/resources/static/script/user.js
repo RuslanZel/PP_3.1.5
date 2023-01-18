@@ -1,5 +1,5 @@
 let userInfo = document.querySelector('#userInfo')
-fetch('http://localhost:8080/api/user')
+fetch('http://localhost:8080/api/singleUser')
     .then(res => res.json())
     .then(user => {
         userInfo.innerHTML = `
@@ -13,7 +13,7 @@ fetch('http://localhost:8080/api/user')
 
 function showUserPage() {
     let userTable = document.querySelector('#userTable')
-    fetch('http://localhost:8080/api/user')
+    fetch('http://localhost:8080/api/singleUser')
         .then(res => res.json())
         .then(user => {
             userTable.innerHTML = `

@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.models.User;
-import ru.kata.spring.boot_security.demo.services.RoleService;
 import ru.kata.spring.boot_security.demo.services.UserService;
 
 
@@ -13,13 +12,13 @@ import java.util.Set;
 
 
 @RestController
-@RequestMapping(value = "/api/admin")
-public class AdminRestController {
+@RequestMapping(value = "/api/user")
+public class UsersRestController {
 
     private final UserService userService;
 
     @Autowired
-    public AdminRestController(UserService userService) {
+    public UsersRestController(UserService userService) {
         this.userService = userService;
     }
 
